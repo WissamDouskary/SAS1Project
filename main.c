@@ -16,10 +16,101 @@ typedef struct {
     int month;
     int day;
 } dero;
-
 int e = 0;
 student students[MAX_ELEVE];
 dero Date[MAX];
+
+//2 . default students :
+void Initialize_Default_Students() {
+    if (e == 0) {
+
+
+        students[0].id = 1;
+        strcpy(students[0].nom, "Ahmed Idris");
+        students[0].generalnote = 15.0;
+        strcpy(students[0].departement, "Info");
+        Date[0].year = 2000;
+        Date[0].month = 5;
+        Date[0].day = 15;
+        e++;
+
+
+        students[1].id = 2;
+        strcpy(students[1].nom, "Layla Hassan");
+        students[1].generalnote = 12.5;
+        strcpy(students[1].departement, "Math");
+        Date[1].year = 1999;
+        Date[1].month = 8;
+        Date[1].day = 22;
+        e++;
+
+
+        students[2].id = 3;
+        strcpy(students[2].nom, "Omar Farouk");
+        students[2].generalnote = 18.0;
+        strcpy(students[2].departement, "Pc");
+        Date[2].year = 2001;
+        Date[2].month = 2;
+        Date[2].day = 10;
+        e++;
+
+
+        students[3].id = 4;
+        strcpy(students[3].nom, "Fatima Nour");
+        students[3].generalnote = 16.0;
+        strcpy(students[3].departement, "Pc");
+        Date[3].year = 2002;
+        Date[3].month = 2;
+        Date[3].day = 20;
+        e++;
+
+        students[4].id = 5;
+        strcpy(students[4].nom, "Youssef Malik");
+        students[4].generalnote = 9.5;
+        strcpy(students[4].departement, "Math");
+        Date[4].year = 2003;
+        Date[4].month = 5;
+        Date[4].day = 8;
+        e++;
+
+        students[5].id = 6;
+        strcpy(students[5].nom, "Zineb Ali");
+        students[5].generalnote = 18.0;
+        strcpy(students[5].departement, "Info");
+        Date[5].year = 2004;
+        Date[5].month = 8;
+        Date[5].day = 27;
+        e++;
+
+        students[6].id = 7;
+        strcpy(students[6].nom, "Khadija Elfassi");
+        students[6].generalnote = 18.0;
+        strcpy(students[6].departement, "Pc");
+        Date[6].year = 2004;
+        Date[6].month = 9;
+        Date[6].day = 14;
+        e++;
+
+        students[7].id = 8;
+        strcpy(students[7].nom, "Mohamed Bensaid");
+        students[7].generalnote = 6.0;
+        strcpy(students[7].departement, "svt");
+        Date[7].year = 2000;
+        Date[7].month = 9;
+        Date[7].day = 12;
+        e++;
+
+        students[9].id = 9;
+        strcpy(students[8].nom, "Omar Farouk");
+        students[8].generalnote = 18.0;
+        strcpy(students[8].departement, "Pc");
+        Date[8].year = 2001;
+        Date[8].month = 2;
+        Date[8].day = 10;
+        e++;
+
+    }
+}
 
 // 1. Ajoute un eleve :
 void Ajouter_eleve() {
@@ -251,6 +342,7 @@ int main() {
         printf("     [3] Rechercher un eleve         \n");
         printf("     [4] Modifier un eleve           \n");
         printf("     [5] Supprimer un eleve          \n");
+        printf("     [6] Default students            \n");
         printf("     [0] Quitter                     \n");
         printf("-------------------------------------\n");
         printf("\nentre un choix : ");
@@ -270,6 +362,9 @@ int main() {
                 break;
             case 5 :
                 Suppr_contact();
+                break;
+            case 6 :
+                Initialize_Default_Students();
                 break;
             default:
                 printf("Choix invalide. Veuillez reessayer.\n");
