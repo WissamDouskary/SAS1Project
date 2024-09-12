@@ -436,11 +436,69 @@ void afficher_stats_tous_departement() {
     printf("Departement Info : %d\n", info_count);
 }
 
+//8 .3 Afficher les étudiants ayant une moyenne générale supérieure à un certain seuil.
+void moyennegenerale_sup_seuil() {
+    float point;
+    int trouver = 0;
+    printf("tapez le seuil de la moyenne generale : ");
+    scanf("%f",&point);
 
+    printf("les eleves ayant une note superieure a %.2f : \n", point);
+
+    for(int i = 0; i < e; i++){
+        if (point <= students[i].generalnote) {
+            printf("=================================\n");
+            printf("ID                   : %d\n", students[i].id);
+            printf("nom et prenom        : %s\n", students[i].nom);
+            printf("Date de naissance    : %d/%d/%d\n", Date[i].year, Date[i].month, Date[i].day);
+            printf("Departement          : %s\n", students[i].departement);
+            printf("note generale        : %.2f\n", students[i].generalnote);
+            printf("=================================\n");
+            trouver = 1;
+        }
+    }
+    if (trouver == 0) {
+        printf("aucun resultat trouve !\n");
+    }
+}
+
+// 8 .5 // Afficher le nombre d'étudiants ayant réussi dans chaque département
+void reussi_eleves(){
+
+    int pc_count = 0, svt_count = 0, math_count = 0, info_count = 0;
+
+    for (int i = 0; i < e; i++) {
+        if (strcmp(students[i].departement, "pc") == 0) {
+            if(students[i].generalnote>=10){
+            pc_count++;
+        }
+        } else if (strcmp(students[i].departement, "svt") == 0) {
+            if(students[i].generalnote>=10){
+            svt_count++;
+        }
+        } else if (strcmp(students[i].departement, "math") == 0) {
+            if(students[i].generalnote>=10){
+            math_count++;
+        }
+        } else if (strcmp(students[i].departement, "info") == 0) {
+            if(students[i].generalnote>=10){
+            info_count++;
+        }
+        }
+    }
+    printf("Nombre d'etudiants reussir dans chaque departement :\n");
+    printf("Departement PC : %d\n", pc_count);
+    printf("Departement SVT : %d\n", svt_count);
+    printf("Departement Math : %d\n", math_count);
+    printf("Departement Info : %d\n", info_count);
+
+}
 void statistique(){
     int nt;
     printf("[1] affichier le nombre d'eleve total \n");
     printf("[2] affichier le nombre d'eleve de l'un des un departement \n");
+    printf("[3] Afficher les etudiants ayant une moyenne generale superieure a un certain seuil \n");
+    printf("[5] Afficher le nombre d'etudiants ayant reussi dans chaque departement \n");
     printf("choisir un choix : ");
     scanf("%d",&nt);
     switch(nt){
@@ -449,6 +507,15 @@ void statistique(){
         break;
     case 2 :
         afficher_stats_tous_departement();
+        break;
+    case 3 :
+        moyennegenerale_sup_seuil();
+        break;
+    case 5 :
+        reussi_eleves();
+        break;
+    default :
+        printf("choix invalide !");
         break;
     }
 }
