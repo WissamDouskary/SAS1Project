@@ -17,6 +17,7 @@ typedef struct {
     int day;
 } dero;
 
+
 int pc,svt,math,info;
 int e = 0;
 student students[MAX_ELEVE];
@@ -27,6 +28,7 @@ void Ajouter_eleve() {
     int many;
     printf("Tapez le nombre d'eleves que vous souhaitez ajouter : ");
     scanf("%d", &many);
+
     if (many + e >= MAX_ELEVE) {
         printf("La liste d'eleves est pleine !\n");
         return;
@@ -219,10 +221,10 @@ void Affich_Tout() {
 }
 
 //3 .Modifier les information d'un eleve :
-void id_search(){
+int id_search(){
     int o;
     int trouve=0;
-
+    int pos;
 
     printf("tapez l'id de l'etudiant que vous souhaitez rechercher : ");
     scanf("%d",&o);
@@ -234,6 +236,7 @@ void id_search(){
         printf("departement       : %s \n",students[i].departement);
         printf("note generale     : %.2f \n",students[i].generalnote);
      trouve = 1;
+     pos=i;
      break;
     }
 
@@ -243,11 +246,12 @@ void id_search(){
         printf("aucun eleve avec ce id !\n");
     }
 
+return pos;
 }
-void name_search(){
+int name_search(){
     char search[100];
     int trouve=0;
-
+    int pos;
 
     printf("ecrire le nom et prenom de l'etudiant que vous souhaitez rechercher : ");
     scanf(" %[^\n]",search);
@@ -259,6 +263,7 @@ void name_search(){
         printf("departement       : %s \n",students[i].departement);
         printf("note generale     : %.2f \n",students[i].generalnote);
      trouve = 1;
+     pos=i;
      break;
     }
 
@@ -267,10 +272,11 @@ void name_search(){
     if(trouve==0){
         printf("aucun eleve avec ce nom !\n");
     }
-
+    return pos;
 
 }
-void departement_search() {
+
+ /*void departement_search() {
     char dep[30];
     int trouve = 0;
     printf("tapez le nom du departement que vous souhaitez rechercher :");
@@ -290,62 +296,65 @@ void departement_search() {
         printf("aucun resultat ! \n");
     }
 }
-void student_search(){
+*/
+int student_search(){
     int mod;
+    int i;
     printf("[1] rechercher avec id.\n");
-    printf("[2] rechercher avec nom.\n");
-    printf("[3] rechercher avec departement.\n");
+    printf("[2] rechercher avec nom et prenom.\n");
     printf("choisir un choix : ");
     scanf("%d",&mod);
     switch(mod){
 case 1 :
-    id_search();
+   i=id_search();
     break;
 case 2 :
-    name_search();
+    i=name_search();
     break;
-case 3 :
-    departement_search();
-    break;
+
     }
+    return i;
 }
 void modify_student(){
-    student_search();
+   int pos=student_search();
     int set;
-    int i ;
+
     printf("[1] pour modifier le nom et prenom \n");
     printf("[2] pour modifier la date de naissance \n");
     printf("[3] pour modifier la departement \n");
     printf("[4] pour modifier la note generale \n");
     printf("choisir un choix : ");
     scanf("%d",&set);
+
+
+
     switch(set){
 case 1 :
     printf("entrer le nouveaux nom et prenom :");
-    scanf(" %[^\n]",students[i].nom);
+    scanf(" %[^\n]",students[pos].nom);
     break;
 case 2 :
     printf("entrer le nouveaux date de naissance :\n");
     printf("Annee : ");
-    scanf("%d",&Date[i].year);
+    scanf("%d",&Date[pos].year);
     printf("Mois  : ");
-    scanf("%d",&Date[i].month);
+    scanf("%d",&Date[pos].month);
     printf("Jour  : ");
-    scanf("%d",&Date[i].day);
+    scanf("%d",&Date[pos].day);
     break;
 case 3 :
     printf("entrer le nouveaux departement :");
-    scanf("%s",students[i].departement);
+    scanf("%s",students[pos].departement);
     break;
 case 4 :
     printf("entrer le nouveaux note generale :");
-    scanf("%f",&students[i].generalnote);
+    scanf("%f",&students[pos].generalnote);
+    break;
 default :
     printf("Choix invalide. Veuillez reessayer.\n");
     break;
 
     }
-
 
 
 }
@@ -406,7 +415,7 @@ void moyenne_generale() {
         printf("Aucun etudiant trouver dans le departement %s.\n", ind);
     }
 }
-// 8.statistique
+// 8.statistique :
 //8 . 1 statistique de nombres d'etudiant :
 void nombre_eleve(){
     printf("le nombre d'eleve dans tous les departement : %d \n" , e );
