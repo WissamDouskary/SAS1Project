@@ -16,6 +16,8 @@ typedef struct {
     int month;
     int day;
 } dero;
+
+int pc,svt,math,info;
 int e = 0;
 student students[MAX_ELEVE];
 dero Date[MAX];
@@ -73,12 +75,36 @@ void Ajouter_eleve() {
 
 
         }while(1);
-        printf("Departement : ");
+        printf("Departement (math, svt, pc, info) : ");
         scanf("%s", students[e].departement);
+        do{
         printf("Note generale : ");
         scanf("%f", &students[e].generalnote);
+        if(students[e].generalnote < 1 || students[e].generalnote > 20){
+            printf("entrer une variable note (1<note<20) ! \n");
+
+        }
+        else{
+            printf("la note est ajoutee avec succes ! \n");
+            break;
+        }
+        }while(1);
         e++;
+        for(int i = 0 ; i < e ; i++){
+        if(strcmp(students[i].departement,"pc")==0){
+            pc++;
+        }
+        if(strcmp(students[i].departement,"svt")==0){
+            svt++;
     }
+        if(strcmp(students[i].departement,"math")==0){
+            math++;
+        }
+        if(strcmp(students[i].departement,"info")==0){
+            info++;
+        }
+    }
+}
 }
 //2 . default students :
 void Initialize_Default_Students() {
@@ -168,6 +194,8 @@ void Initialize_Default_Students() {
         Date[e].day = 10;
         e++;
 
+        printf("l'etudiant par defaut est ajoute avec succes ! \n");
+
 }
 
 
@@ -244,40 +272,22 @@ void name_search(){
 }
 void departement_search() {
     char dep[30];
-    char ele[30];
-    int trouver = 0;
+    int trouve = 0;
+    printf("tapez le nom du departement que vous souhaitez rechercher :");
+    scanf("%s",dep);
+    for(int i = 0 ; i < e ; i++){
+        if(strcmp(dep,students[i].departement)==0){
+            printf("%s departement : \n",dep);
+            printf("id                : %d \n",students[i].id);
+            printf("nom et prenom     : %s \n",students[i].nom);
+            printf("date de naissance : %d/%d/%d \n",Date[i].year,Date[i].month,Date[i].day);
+            printf("la note generale  : %.2f \n",students[i].generalnote);
+            trouve = 1;
 
-    printf("ecrire le nom de departement qui contient l'eleve : ");
-    scanf("%s", dep);
-
-    for (int i = 0; i < e; i++) {
-        if (strcmp(dep, students[i].departement) == 0) {
-            printf("departement est trouve !\n");
-            printf("ecrire le prenom et nom d'eleve : ");
-            scanf("%s", ele);
-
-            for (int j = i; j < e; j++) {
-                if (strcmp(ele, students[j].nom) == 0) {
-                    printf("les informations d'eleve :\n");
-                    printf("nom et prenom            : %s\n", students[j].nom);
-                    printf("Date de naissance        : %d/%d/%d\n", Date[j].year, Date[j].month, Date[j].day);
-                    printf("Departement              : %s\n", students[j].departement);
-                    printf("note generale            : %.2f\n", students[j].generalnote);
-                    trouver = 1;
-                    break;
-                }
-            }
-
-            if (trouver == 0) {
-                printf("aucun resultat trouver !\n");
-            }
-            trouver = 1;
-            break;
-        }
     }
-
-    if (trouver == 0) {
-        printf("aucun resultat trouver !\n");
+    }
+    if(trouve==0){
+        printf("aucun resultat ! \n");
     }
 }
 void student_search(){
@@ -396,6 +406,52 @@ void moyenne_generale() {
         printf("Aucun etudiant trouver dans le departement %s.\n", ind);
     }
 }
+// 8.statistique
+//8 . 1 statistique de nombres d'etudiant :
+void nombre_eleve(){
+    printf("le nombre d'eleve dans tous les departement : %d \n" , e );
+}
+//8 . 2 Afficher le nombre d'étudiants dans chaque département.
+void afficher_stats_tous_departement() {
+
+    int pc_count = 0, svt_count = 0, math_count = 0, info_count = 0;
+
+
+    for (int i = 0; i < e; i++) {
+        if (strcmp(students[i].departement, "pc") == 0) {
+            pc_count++;
+        } else if (strcmp(students[i].departement, "svt") == 0) {
+            svt_count++;
+        } else if (strcmp(students[i].departement, "math") == 0) {
+            math_count++;
+        } else if (strcmp(students[i].departement, "info") == 0) {
+            info_count++;
+        }
+    }
+
+    printf("Nombre d'etudiants dans chaque departement :\n");
+    printf("Departement PC : %d\n", pc_count);
+    printf("Departement SVT : %d\n", svt_count);
+    printf("Departement Math : %d\n", math_count);
+    printf("Departement Info : %d\n", info_count);
+}
+
+
+void statistique(){
+    int nt;
+    printf("[1] affichier le nombre d'eleve total \n");
+    printf("[2] affichier le nombre d'eleve de l'un des un departement \n");
+    printf("choisir un choix : ");
+    scanf("%d",&nt);
+    switch(nt){
+    case 1 :
+        nombre_eleve();
+        break;
+    case 2 :
+        afficher_stats_tous_departement();
+        break;
+    }
+}
 
 int main() {
     int choix;
@@ -408,8 +464,9 @@ int main() {
         printf("     [3] Rechercher un eleve         \n");
         printf("     [4] Modifier un eleve           \n");
         printf("     [5] Supprimer un eleve          \n");
-        printf("     [6] Default students            \n");
-        printf("     [7] moyenne generale            \n");
+        printf("     [6] Etudiants par defaut        \n");
+        printf("     [7] Moyenne generale            \n");
+        printf("     [8] statistiques                \n");
         printf("     [0] Quitter                     \n");
         printf("-------------------------------------\n");
         printf("\nentre un choix : ");
@@ -435,6 +492,9 @@ int main() {
                 break;
             case 7 :
                 moyenne_generale();
+                break;
+            case 8 :
+                statistique();
                 break;
             default:
                 printf("Choix invalide Veuillez reessayer.\n");
