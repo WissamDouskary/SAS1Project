@@ -20,98 +20,6 @@ int e = 0;
 student students[MAX_ELEVE];
 dero Date[MAX];
 
-//2 . default students :
-void Initialize_Default_Students() {
-    if (e == 0) {
-
-
-        students[0].id = 1;
-        strcpy(students[0].nom, "Ahmed Idris");
-        students[0].generalnote = 15.0;
-        strcpy(students[0].departement, "Info");
-        Date[0].year = 2000;
-        Date[0].month = 5;
-        Date[0].day = 15;
-        e++;
-
-
-        students[1].id = 2;
-        strcpy(students[1].nom, "Layla Hassan");
-        students[1].generalnote = 12.5;
-        strcpy(students[1].departement, "Math");
-        Date[1].year = 1999;
-        Date[1].month = 8;
-        Date[1].day = 22;
-        e++;
-
-
-        students[2].id = 3;
-        strcpy(students[2].nom, "Omar Farouk");
-        students[2].generalnote = 18.0;
-        strcpy(students[2].departement, "Pc");
-        Date[2].year = 2001;
-        Date[2].month = 2;
-        Date[2].day = 10;
-        e++;
-
-
-        students[3].id = 4;
-        strcpy(students[3].nom, "Fatima Nour");
-        students[3].generalnote = 16.0;
-        strcpy(students[3].departement, "Pc");
-        Date[3].year = 2002;
-        Date[3].month = 2;
-        Date[3].day = 20;
-        e++;
-
-        students[4].id = 5;
-        strcpy(students[4].nom, "Youssef Malik");
-        students[4].generalnote = 9.5;
-        strcpy(students[4].departement, "Math");
-        Date[4].year = 2003;
-        Date[4].month = 5;
-        Date[4].day = 8;
-        e++;
-
-        students[5].id = 6;
-        strcpy(students[5].nom, "Zineb Ali");
-        students[5].generalnote = 18.0;
-        strcpy(students[5].departement, "Info");
-        Date[5].year = 2004;
-        Date[5].month = 8;
-        Date[5].day = 27;
-        e++;
-
-        students[6].id = 7;
-        strcpy(students[6].nom, "Khadija Elfassi");
-        students[6].generalnote = 18.0;
-        strcpy(students[6].departement, "Pc");
-        Date[6].year = 2004;
-        Date[6].month = 9;
-        Date[6].day = 14;
-        e++;
-
-        students[7].id = 8;
-        strcpy(students[7].nom, "Mohamed Bensaid");
-        students[7].generalnote = 6.0;
-        strcpy(students[7].departement, "svt");
-        Date[7].year = 2000;
-        Date[7].month = 9;
-        Date[7].day = 12;
-        e++;
-
-        students[9].id = 9;
-        strcpy(students[8].nom, "Omar Farouk");
-        students[8].generalnote = 18.0;
-        strcpy(students[8].departement, "Pc");
-        Date[8].year = 2001;
-        Date[8].month = 2;
-        Date[8].day = 10;
-        e++;
-
-    }
-}
-
 // 1. Ajoute un eleve :
 void Ajouter_eleve() {
     int many;
@@ -155,7 +63,7 @@ void Ajouter_eleve() {
         if (Date[e].day < 1 || Date[e].day > 31) {
             printf("entrer un jour entre 1 et 31.\n");
         } else if (Date[e].month == 2 && Date[e].day > 28) {
-            printf("le jour doit être entre 1 et 28 !\n");  // fevrier 28jour
+            printf("le jour doit etre entre 1 et 28 !\n");  // fevrier 28jour
         } else if ((Date[e].month == 4 || Date[e].month == 6 || Date[e].month == 9 || Date[e].month == 11) && Date[e].day > 30) {
             printf("Ce mois a seulement 30 jours !\n"); //les mois de 30 jour
         } else {
@@ -172,6 +80,97 @@ void Ajouter_eleve() {
         e++;
     }
 }
+//2 . default students :
+void Initialize_Default_Students() {
+
+
+        students[e].id = e+1;
+        strcpy(students[e].nom, "Idrissi Ahmad");
+        students[e].generalnote = 15.0;
+        strcpy(students[e].departement, "info");
+        Date[e].year = 2000;
+        Date[e].month = 5;
+        Date[e].day = 15;
+        e++;
+
+
+        students[e].id = e+1;
+        strcpy(students[e].nom, "Hassani Layla");
+        students[e].generalnote = 12.5;
+        strcpy(students[e].departement, "math");
+        Date[e].year = 1999;
+        Date[e].month = 8;
+        Date[e].day = 22;
+        e++;
+
+
+        students[e].id = e+1;
+        strcpy(students[e].nom, "Farouk Omar");
+        students[e].generalnote = 18.0;
+        strcpy(students[e].departement, "math");
+        Date[e].year = 2001;
+        Date[e].month = 2;
+        Date[e].day = 10;
+        e++;
+
+
+        students[e].id = e+1;
+        strcpy(students[e].nom, "Nour Fatima");
+        students[e].generalnote = 10.0;
+        strcpy(students[e].departement, "pc");
+        Date[e].year = 2002;
+        Date[e].month = 2;
+        Date[e].day = 20;
+        e++;
+
+        students[e].id = e+1;
+        strcpy(students[e].nom, "Malik Youssef");
+        students[e].generalnote = 9.5;
+        strcpy(students[e].departement, "math");
+        Date[e].year = 2003;
+        Date[e].month = 5;
+        Date[e].day = 8;
+        e++;
+
+        students[e].id = e+1;
+        strcpy(students[e].nom, "Ali Zineb");
+        students[e].generalnote = 13.0;
+        strcpy(students[e].departement, "info");
+        Date[e].year = 2004;
+        Date[e].month = 8;
+        Date[e].day = 27;
+        e++;
+
+        students[e].id = e+1;
+        strcpy(students[e].nom, "Elfassi Khadija");
+        students[e].generalnote = 19.0;
+        strcpy(students[e].departement, "pc");
+        Date[e].year = 2004;
+        Date[e].month = 9;
+        Date[e].day = 14;
+        e++;
+
+        students[e].id = e+1;
+        strcpy(students[e].nom, "Bensaid Mohamed");
+        students[e].generalnote = 6.0;
+        strcpy(students[e].departement, "svt");
+        Date[e].year = 2000;
+        Date[e].month = 9;
+        Date[e].day = 12;
+        e++;
+
+        students[e].id = e+1;
+        strcpy(students[e].nom, "Sina John");
+        students[e].generalnote = 18.0;
+        strcpy(students[e].departement, "pc");
+        Date[e].year = 2001;
+        Date[e].month = 2;
+        Date[e].day = 10;
+        e++;
+
+}
+
+
 
 // 2. Afficher les details :
 void Affich_Tout() {
@@ -215,6 +214,7 @@ void id_search(){
     if(trouve==0){
         printf("aucun eleve avec ce id !\n");
     }
+
 }
 void name_search(){
     char search[100];
@@ -242,10 +242,49 @@ void name_search(){
 
 
 }
+void departement_search() {
+    char dep[30];
+    char ele[30];
+    int trouver = 0;
+
+    printf("ecrire le nom de departement qui contient l'eleve : ");
+    scanf("%s", dep);
+
+    for (int i = 0; i < e; i++) {
+        if (strcmp(dep, students[i].departement) == 0) {
+            printf("departement est trouve !\n");
+            printf("ecrire le prenom et nom d'eleve : ");
+            scanf("%s", ele);
+
+            for (int j = i; j < e; j++) {
+                if (strcmp(ele, students[j].nom) == 0) {
+                    printf("les informations d'eleve :\n");
+                    printf("nom et prenom            : %s\n", students[j].nom);
+                    printf("Date de naissance        : %d/%d/%d\n", Date[j].year, Date[j].month, Date[j].day);
+                    printf("Departement              : %s\n", students[j].departement);
+                    printf("note generale            : %.2f\n", students[j].generalnote);
+                    trouver = 1;
+                    break;
+                }
+            }
+
+            if (trouver == 0) {
+                printf("aucun resultat trouver !\n");
+            }
+            trouver = 1;
+            break;
+        }
+    }
+
+    if (trouver == 0) {
+        printf("aucun resultat trouver !\n");
+    }
+}
 void student_search(){
     int mod;
     printf("[1] rechercher avec id.\n");
     printf("[2] rechercher avec nom.\n");
+    printf("[3] rechercher avec departement.\n");
     printf("choisir un choix : ");
     scanf("%d",&mod);
     switch(mod){
@@ -255,12 +294,15 @@ case 1 :
 case 2 :
     name_search();
     break;
+case 3 :
+    departement_search();
+    break;
     }
 }
 void modify_student(){
-    int i ;
     student_search();
     int set;
+    int i ;
     printf("[1] pour modifier le nom et prenom \n");
     printf("[2] pour modifier la date de naissance \n");
     printf("[3] pour modifier la departement \n");
@@ -289,10 +331,12 @@ case 4 :
     printf("entrer le nouveaux note generale :");
     scanf("%f",&students[i].generalnote);
 default :
-    printf("Choix invalide. Veuillez reessayer.");
+    printf("Choix invalide. Veuillez reessayer.\n");
     break;
 
     }
+
+
 
 }
 //3. Supprimer un eleve
@@ -331,10 +375,32 @@ void Suppr_contact() {
     return;
 }
 
+void moyenne_generale() {
+    char ind[30];
+    int total = 0;
+    int count = 0;
+
+    printf("Quel departement voulez vous voir la note generale : ");
+    scanf("%s", ind);
+
+    for (int i = 0; i < e; i++) {
+        if (strcmp(ind, students[i].departement) == 0) {
+            total += students[i].generalnote;
+            count++;
+        }
+    }
+
+    if (count > 0) {
+        printf("La moyenne generale du departement %s est : %.2f\n", ind, (float)total / count);
+    } else {
+        printf("Aucun etudiant trouver dans le departement %s.\n", ind);
+    }
+}
+
 int main() {
     int choix;
     do {
-         printf("-------------------------------------\n");
+        printf("-------------------------------------\n");
         printf("             MAIN MENU               \n");
         printf("-------------------------------------\n");
         printf("     [1] Ajouter un eleve            \n");
@@ -343,6 +409,7 @@ int main() {
         printf("     [4] Modifier un eleve           \n");
         printf("     [5] Supprimer un eleve          \n");
         printf("     [6] Default students            \n");
+        printf("     [7] moyenne generale            \n");
         printf("     [0] Quitter                     \n");
         printf("-------------------------------------\n");
         printf("\nentre un choix : ");
@@ -366,8 +433,11 @@ int main() {
             case 6 :
                 Initialize_Default_Students();
                 break;
+            case 7 :
+                moyenne_generale();
+                break;
             default:
-                printf("Choix invalide. Veuillez reessayer.\n");
+                printf("Choix invalide Veuillez reessayer.\n");
                 break;
         }
     } while (choix != 0);
