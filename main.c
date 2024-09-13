@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_ELEVE 100
 #define MAX 100
@@ -21,6 +22,7 @@ typedef struct {
 int pc,svt,math,info;
 int e = 0;
 student students[MAX_ELEVE];
+
 dero Date[MAX];
 
 // 1. Ajoute un eleve :
@@ -36,14 +38,32 @@ void Ajouter_eleve() {
     for (int i = 0; i < many; i++) {
         printf("L'id : %d\n",e+1);
         students[e].id = e+1;
+    }
+        do{
+        int touver = 1;
+
         printf("Le nom et prenom : ");
         scanf(" %[^\n]", students[e].nom);
+
+        for(int i= 0 ; i < e ; i++){
+        if(strcmp(students[i].nom,students[e].nom)==0){
+            printf("ce nom d'etudiant se trouve dans la liste des etudiants !\n");
+            touver = 0 ;
+            break;
+        }
+        }
+        if(touver){
+            printf("le nom est disponible ! \n");
+            break;
+        }
+        }while(1);
+
         printf("Date de naissance : \n");
         do{
             printf("Annee : ");
             scanf("%d", &Date[e].year);
-        if(Date[e].year > 2023 || Date[e].year < 1980){
-            printf("entrer une date plus de 1980 et moins de 2023 !\n");
+        if(Date[e].year > 2008 || Date[e].year <= 2000){
+            printf("entrer une date plus ou egale de 2000 et moins de 2008 !\n");
         }else{
             printf("la variable annee est ajoutee avec succes! \n");
             break;
@@ -64,11 +84,11 @@ void Ajouter_eleve() {
             printf("Jour : ");
     scanf("%d", &Date[e].day);
 
-        if (Date[e].day < 1 || Date[e].day > 31) {
+        if (Date[e].day <= 1 || Date[e].day >= 31) {
             printf("entrer un jour entre 1 et 31.\n");
-        } else if (Date[e].month == 2 && Date[e].day > 28) {
+        } else if (Date[e].month == 2 && Date[e].day >= 28) {
             printf("le jour doit etre entre 1 et 28 !\n");  // fevrier 28jour
-        } else if ((Date[e].month == 4 || Date[e].month == 6 || Date[e].month == 9 || Date[e].month == 11) && Date[e].day > 30) {
+        } else if ((Date[e].month == 4 || Date[e].month == 6 || Date[e].month == 9 || Date[e].month == 11) && Date[e].day >= 30) {
             printf("Ce mois a seulement 30 jours !\n"); //les mois de 30 jour
         } else {
             printf("La variable jour est ajoutee avec succes !\n");
@@ -107,14 +127,14 @@ void Ajouter_eleve() {
         }
     }
 }
-}
+
 //2 . default students :
 void Initialize_Default_Students() {
 
 
         students[e].id = e+1;
         strcpy(students[e].nom, "Idrissi Ahmad");
-        students[e].generalnote = 15.0;
+        students[e].generalnote = 15.7;
         strcpy(students[e].departement, "info");
         Date[e].year = 2000;
         Date[e].month = 5;
@@ -126,7 +146,7 @@ void Initialize_Default_Students() {
         strcpy(students[e].nom, "Hassani Layla");
         students[e].generalnote = 12.5;
         strcpy(students[e].departement, "math");
-        Date[e].year = 1999;
+        Date[e].year = 2001;
         Date[e].month = 8;
         Date[e].day = 22;
         e++;
@@ -134,9 +154,9 @@ void Initialize_Default_Students() {
 
         students[e].id = e+1;
         strcpy(students[e].nom, "Farouk Omar");
-        students[e].generalnote = 18.0;
+        students[e].generalnote = 19.5;
         strcpy(students[e].departement, "math");
-        Date[e].year = 2001;
+        Date[e].year = 2005;
         Date[e].month = 2;
         Date[e].day = 10;
         e++;
@@ -146,7 +166,7 @@ void Initialize_Default_Students() {
         strcpy(students[e].nom, "Nour Fatima");
         students[e].generalnote = 10.0;
         strcpy(students[e].departement, "pc");
-        Date[e].year = 2002;
+        Date[e].year = 2003;
         Date[e].month = 2;
         Date[e].day = 20;
         e++;
@@ -155,7 +175,7 @@ void Initialize_Default_Students() {
         strcpy(students[e].nom, "Malik Youssef");
         students[e].generalnote = 9.5;
         strcpy(students[e].departement, "math");
-        Date[e].year = 2003;
+        Date[e].year = 2004;
         Date[e].month = 5;
         Date[e].day = 8;
         e++;
@@ -164,16 +184,16 @@ void Initialize_Default_Students() {
         strcpy(students[e].nom, "Ali Zineb");
         students[e].generalnote = 13.0;
         strcpy(students[e].departement, "info");
-        Date[e].year = 2004;
+        Date[e].year = 2003;
         Date[e].month = 8;
         Date[e].day = 27;
         e++;
 
         students[e].id = e+1;
         strcpy(students[e].nom, "Elfassi Khadija");
-        students[e].generalnote = 19.0;
+        students[e].generalnote = 16.0;
         strcpy(students[e].departement, "pc");
-        Date[e].year = 2004;
+        Date[e].year = 2006;
         Date[e].month = 9;
         Date[e].day = 14;
         e++;
@@ -182,16 +202,16 @@ void Initialize_Default_Students() {
         strcpy(students[e].nom, "Bensaid Mohamed");
         students[e].generalnote = 6.0;
         strcpy(students[e].departement, "svt");
-        Date[e].year = 2000;
+        Date[e].year = 2002;
         Date[e].month = 9;
         Date[e].day = 12;
         e++;
 
         students[e].id = e+1;
         strcpy(students[e].nom, "Sina John");
-        students[e].generalnote = 18.0;
+        students[e].generalnote =15.0;
         strcpy(students[e].departement, "pc");
-        Date[e].year = 2001;
+        Date[e].year = 2007;
         Date[e].month = 2;
         Date[e].day = 10;
         e++;
@@ -359,7 +379,7 @@ default :
 
 }
 //3. Supprimer un eleve
-void Suppr_contact() {
+void Suppr_contact_with_name() {
     char name[100];
     char confirmation[3];
     int suppr = 0;
@@ -375,7 +395,7 @@ void Suppr_contact() {
     }
 
     if (suppr == 0) {
-        printf("Le nom du contact n'a pas ete trouver ! \n");
+        printf("Le nom d'eleve n'a pas ete trouver ! \n");
     } else {
         printf("Etes vous sur de vouloir supprimer l'eleve '%s' ? (oui/non) : ", name);
         scanf("%s", confirmation);
@@ -392,6 +412,57 @@ void Suppr_contact() {
         }
     }
     return;
+}
+void Suppr_contact_with_id(){
+    int ID;
+    char confirmation[3];
+    int suppr = 0;
+    int i , j ;
+    printf("Tapez l'ID que vous souhaitez supprimer : ");
+    scanf("%d",&ID);
+    for (i = 0; i < e; i++) {
+        if (ID==students[i].id){
+            suppr = 1;
+            break;
+        }
+    }
+
+    if (suppr == 0) {
+        printf("ID de eleve n'a pas ete trouver ! \n");
+    } else {
+        printf("Etes vous sur de vouloir supprimer l'eleve '%d' ? (oui/non) : ", ID);
+        scanf("%s", confirmation);
+
+    if (strcmp(confirmation, "oui") == 0) {
+            for (j = i; j < e - 1; j++) {
+                students[j] = students[j + 1];
+                Date[j] = Date[j + 1];
+            }
+            e--;
+            printf("L'eleve a ete supprime ! \n");
+        } else {
+            printf("Suppression annulee.\n");
+        }
+    }
+
+}
+void Suppr_contact(){
+    int choix;
+    printf("[1] rechercher avec id et supprimer.\n");
+    printf("[2] rechercher avec nom et prenom et supprimer.\n");
+    printf("Choisir une choix : ");
+    scanf("%d",&choix);
+    switch(choix){
+case 1 :
+    Suppr_contact_with_id();
+    break;
+case 2 :
+    Suppr_contact_with_name();
+    break;
+default :
+    printf("invalid choix !");
+    break;
+    }
 }
 
 void moyenne_generale() {
@@ -502,11 +573,49 @@ void reussi_eleves(){
     printf("Departement Info : %d\n", info_count);
 
 }
+// le premier 3 :
+void firsttree(){
+    student B_students[MAX_ELEVE];
+    dero B_Date[MAX];
+
+    for(int i = 0 ; i < e ; i++ ){
+        B_students[i] = students[i] ;
+        B_Date[i] = Date[i];
+
+    }
+     for(int i = 0; i < e ; i++) {
+        for(int j = 0; j < e - i - 1 ; j++) {
+        if(B_students[j].generalnote < B_students[j + 1].generalnote ) {
+
+        student tempStudent = B_students[j];
+        B_students[j] = B_students[j + 1];
+        B_students[j + 1] = tempStudent;
+
+
+        dero tempDate = B_Date[j];
+        B_Date[j] = B_Date[j + 1];
+        B_Date[j + 1] = tempDate;
+            }
+        }
+
+    }
+    for(int i = 0 ; i < 3 ; i++){
+        printf("--------------------------------\n");
+        printf("ID                : %d \n",B_students[i].id);
+        printf("nom et prenom     : %s \n",B_students[i].nom);
+        printf("date de naissance : %d/%d/%d \n",B_Date[i].year,B_Date[i].month,B_Date[i].day);
+        printf("note generale     : %.2f\n",B_students[i].generalnote);
+        printf("departement       : %s \n",B_students[i].departement);
+        printf("--------------------------------\n");
+    }
+}
+
 void statistique(){
     int nt;
     printf("[1] affichier le nombre d'eleve total \n");
     printf("[2] affichier le nombre d'eleve de l'un des un departement \n");
     printf("[3] Afficher les etudiants ayant une moyenne generale superieure a un certain seuil \n");
+    printf("[4] les premiere 3 dans l'university. \n");
     printf("[5] Afficher le nombre d'etudiants ayant reussi dans chaque departement \n");
     printf("choisir un choix : ");
     scanf("%d",&nt);
@@ -520,12 +629,108 @@ void statistique(){
     case 3 :
         moyennegenerale_sup_seuil();
         break;
+    case 4 :
+        firsttree();
+        break;
     case 5 :
         reussi_eleves();
         break;
     default :
         printf("choix invalide !");
         break;
+    }
+}
+// tri par nom et prenom A a Z (bubble sort):
+void trinomprenomAaZ() {
+    student B_students[MAX_ELEVE];
+    dero B_Date[MAX];
+
+    for(int i = 0 ; i< e ; i++ ){
+        B_students[i] = students[i] ;
+        B_Date[i] = Date[i];
+
+    }
+     for(int i = 0; i < e - 1; i++) {
+        for(int j = 0; j < e - i - 1; j++) {
+        if(strcmp(B_students[j].nom, B_students[j + 1].nom) > 0) {
+
+        student tempStudent = B_students[j];
+        B_students[j] = B_students[j + 1];
+        B_students[j + 1] = tempStudent;
+
+
+        dero tempDate = B_Date[j];
+        B_Date[j] = B_Date[j + 1];
+        B_Date[j + 1] = tempDate;
+            }
+        }
+
+    }
+     for(int i = 0; i < e; i++) {
+        printf("===================================\n");
+        printf("ID                  : %d\n", B_students[i].id);
+        printf("nom et prenom       : %s\n", B_students[i].nom);
+        printf("date de naissance   : %d/%d/%d\n", B_Date[i].year, B_Date[i].month, B_Date[i].day);
+        printf("departement         : %s\n", B_students[i].departement);
+        printf("note generale       : %.2f\n", B_students[i].generalnote);
+        printf("===================================\n");
+    }
+
+}
+//tri par moyenne generale :
+void triparmoyennegenerale(){
+    student B_students[MAX_ELEVE];
+    dero B_Date[MAX];
+
+    for(int i = 0 ; i< e ; i++ ){
+        B_students[i] = students[i] ;
+        B_Date[i] = Date[i];
+
+    }
+     for(int i = 0; i < e - 1; i++) {
+        for(int j = 0; j < e - i - 1; j++) {
+        if(B_students[j].generalnote < B_students[j + 1].generalnote  ) {
+
+        student tempStudent = B_students[j];
+        B_students[j] = B_students[j + 1];
+        B_students[j + 1] = tempStudent;
+
+
+        dero tempDate = B_Date[j];
+        B_Date[j] = B_Date[j + 1];
+        B_Date[j + 1] = tempDate;
+            }
+        }
+
+    }
+     for(int i = 0; i < e; i++) {
+        printf("===================================\n");
+        printf("ID                  : %d\n", B_students[i].id);
+        printf("nom et prenom       : %s\n", B_students[i].nom);
+        printf("date de naissance   : %d/%d/%d\n", B_Date[i].year, B_Date[i].month, B_Date[i].day);
+        printf("departement         : %s\n", B_students[i].departement);
+        printf("note generale       : %.2f\n", B_students[i].generalnote);
+        printf("===================================\n");
+    }
+
+}
+
+void triengeneral(){
+    int chox;
+    printf("[1] Tri par nom et prenom A a Z.\n");
+    printf("[2] Tri par moyenne generale. \n");
+    printf("choisir un choix : ");
+    scanf("%d",&chox);
+    switch(chox){
+case 1 :
+    trinomprenomAaZ();
+    break;
+case 2 :
+    triparmoyennegenerale();
+    break;
+default :
+    printf("choix invalid ! \n");
+    break;
     }
 }
 
@@ -543,6 +748,7 @@ int main() {
         printf("     [6] Etudiants par defaut        \n");
         printf("     [7] Moyenne generale            \n");
         printf("     [8] statistiques                \n");
+        printf("     [9] tri                         \n");
         printf("     [0] Quitter                     \n");
         printf("-------------------------------------\n");
         printf("\nentre un choix : ");
@@ -572,10 +778,18 @@ int main() {
             case 8 :
                 statistique();
                 break;
-            default:
-                printf("Choix invalide Veuillez reessayer.\n");
+            case 9 :
+                triengeneral();
                 break;
-        }
+            case 0 :
+                printf("end ! \n");
+                break;
+            default :
+                printf("Choix invalide, Veuillez reessayer.\n");
+                break;
+            }
+
+
     } while (choix != 0);
 
     return 0;
